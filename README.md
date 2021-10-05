@@ -1,1 +1,1 @@
-📝 Sistema de Anotações
+Sistema de Anotações
