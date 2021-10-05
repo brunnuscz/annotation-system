@@ -10,7 +10,7 @@
     const flash = require('connect-flash');
     const passport = require('passport');
     require("./config/auth")(passport);
-    const db = require('./config/db');
+    // const db = require('./config/db');
 // CONFIGURAÇÕES
     // SESSION
         app.use(session({
@@ -39,10 +39,9 @@
         app.set('view engine', 'handlebars');
     // MONGOOSE
         mongoose.Promise = global.Promise;
-        mongoose.connect(db.mongoURI).then(()=>{
-            console.log("Conectado ao MongoDB");
-        }).catch((erro)=>{
-            console.log("Erro ao se conectar ao mongo: "+erro);
+        mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/annotation-system',{
+            userNewUrlParser: true,
+            useUnifiedTopology: true
         });
     // PUBLIC
         app.use(express.static(path.join(__dirname,"public")));
