@@ -1,2 +1,2 @@
 Sistema de Anotações
-annotation-system.herokuapp.com
+http://annotation-system.herokuapp.com
