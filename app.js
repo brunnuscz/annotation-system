@@ -39,10 +39,8 @@
         app.set('view engine', 'handlebars');
     // MONGOOSE
         mongoose.Promise = global.Promise;
-        mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/annotation-system',{
-            userNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        const mongoDbURL = process.env.MONGODB_URL || 'mongodb://localhost/annotation-system'
+        mongoose.connect((mongoDbURL, {userNewUrlPaser: true}))
     // PUBLIC
         app.use(express.static(path.join(__dirname,"public")));
         
