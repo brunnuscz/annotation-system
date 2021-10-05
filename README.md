@@ -1,2 +1,2 @@
-Para acessar o site, acesse a url abaixo:
+Para acessar o site, acesse a url:
 http://annotation-system.herokuapp.com
