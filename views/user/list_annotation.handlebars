@@ -1,35 +1,37 @@
 {{>_navbar}}
-<h2 class="texto_principal">Listar Anotações</h2>
-<hr>
-<a href="/create/annotation">
-    <button class="btn btn-success">
-        Nova Anotação
-    </button>
-</a>
-{{#each annotations}}
-    <div class="card mt-4">
-        <div class="card-body">
-            <h2>{{title}}</h2>
-            <h6>{{user_name}}</h6>
+<div id="fundo-secundario">
+    <h2 class="texto-principal">Listar Anotações</h2>
 
-            <a href="/edit/annotation/{{_id}}">
-                <button class="btn btn-warning mt-2">
-                    Editar
-                </button>
-            </a>
-            <form action="/delete/annotation" method="POST">
-                <input type="hidden" name="id" value="{{_id}}">
-                <button type="submit" class="btn btn-danger mt-2">
-                    Deletar
-                </button>
-            </form>
-            <a href="/see_more/annotation/{{_id}}">
-                <button class="btn btn-primary mt-2">
-                    Visualizar
-                </button>
-            </a>
+    <a href="/create/annotation">
+        <button id="adicionar" class="btn">
+            Nova Anotação
+        </button>
+    </a><br>
+    {{#each annotations}}
+        <div id="card-novo-2"class="mt-4">
+            <div class="card-body">
+                <h2>{{title}}</h2>
+                <h6>{{user_name}}</h6>
+
+                <a href="/edit/annotation/{{_id}}">
+                    <button id="editar" class="btn mt-2">
+                        Editar
+                    </button>
+                </a>
+                <form action="/delete/annotation" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" id="deletar" class="btn btn-danger mt-2">
+                        Deletar
+                    </button>
+                </form>
+                <a href="/see_more/annotation/{{_id}}">
+                    <button id="visualizar" class="btn mt-2">
+                        Visualizar
+                    </button>
+                </a>
+            </div>
         </div>
-    </div>
-{{else}}
-    <h4 class="mt-4">Nenhuma anotação registrada</h4>
-{{/each}}
+    {{else}}
+        <h4 class="mt-4">Nenhuma anotação registrada</h4>
+    {{/each}}
+</div>

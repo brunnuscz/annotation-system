@@ -6,43 +6,159 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-/*-------------------ARQUIVOS ADICIONAIS-------------------*/
-
-/*LIMPANDO AS FORMATAÇÕES PADRÕES*/
-/* (*) -> QUER DIZER TUDO */
+/*--------------ARQUIVOS ADICIONAIS-----------------*/
 * {
   margin: 0;
   padding: 0;
 }
-/*----------------------SELETORES----------------------*/
-body{
+body {
   font-size: 1em;
   font-family: Comic Sans MS, Comic Sans, cursive;
-  background: #7b7b7b;
 }
 hr {
-  color: #474747;
-  border: 1px solid #474747;
-  background-color: #474747;
-  height: 10px;
-  padding-top: 0.3px;
+  color: #050505;
+  border: #050505;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #050505;
 }
-
-/*------------------------IDs------------------------*/
+#fundo-principal{
+  background: rgb(250, 250, 250);
+}
+#card-novo{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 50px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+#card-novo-2{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+#fundo-secundario{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  padding-bottom: 100px;
+  margin-bottom: 100px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
 #area-botao{
   font-size: 20px;
   padding: 10px;
   text-align: center;
 }
-/*----------------------CLASSES----------------------*/
-.texto_principal{
+#link-sair{
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+#link-sair:hover{
+  color: #797979;
+  text-decoration: none;
+}
+#link-registrar{
+  color: #0035d5;
+  text-decoration: none;
+}
+#link-registrar:hover{
+  color: #828282;
+  text-decoration: none;
+}
+#deletar{
+  background-color: rgb(211, 0, 0);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 90px;
+  float: right;
+  height: 30px;
+}
+#visualizar{
+  background-color: rgb(6, 144, 175);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 90px;
+  float: right;
+  height: 30px;
+}
+#adicionar{
+  background-color: rgb(48, 175, 6);
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 120px;
+  margin-left: 10px;
+  float: left;
+  height: 30px;
+}
+#editar{
+  background-color: rgb(211, 186, 0);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 90px;
+  float: right;
+  height: 30px;
+}
+#criar{
+  background-color: rgb(48, 175, 6);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 140px;
+  height: 30px;
+}
+#listar{
+  background-color: rgb(0, 67, 162);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 140px;
+  height: 30px;
+}
+#concluir{
+  background-color: rgb(48, 175, 6);
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 90px;
+  height: 30px;
+}
+.texto-principal{
+  padding-top: 10px;
   text-align: center;
 }
-
-
-
 /*----------------------FIM-------------------------*/
-
 
 :root {
   --bs-blue: #0d6efd;
@@ -110,26 +226,6 @@ hr {
   }
 }
 
-body {
-  margin: 0;
-  font-family: var(--bs-body-font-family);
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-hr {
-  margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
-  border: 0;
-  opacity: 0.25;
-}
 
 hr:not([size]) {
   height: 1px;
@@ -268,13 +364,7 @@ sup {
   top: -0.5em;
 }
 
-a {
-  color: #0d6efd;
-  text-decoration: underline;
-}
-a:hover {
-  color: #0a58ca;
-}
+
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
@@ -4488,6 +4578,7 @@ textarea.form-control-lg {
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
+  margin-bottom: 50px;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -4517,7 +4608,7 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  padding: 10px;
 }
 
 .card-title {

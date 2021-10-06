@@ -148,7 +148,7 @@
             if(req.body.password.length < 4){
                 erros.push({texto: "Senha muito curta"});
             }
-            if(!req.body.password != !req.body.password_compared){
+            if(req.body.password != req.body.password_compared){
                 erros.push({texto: "Senhas imcopatíveis"});
             }
             if(erros.length > 0){
@@ -192,6 +192,7 @@
             failureRedirect: "/",
             failureFlash: true
         })(req,res,next);
+        req.flash("success_msg", "Bem-Vindo ", req.body.name_user);
     });
 // EXPORTAR O ROUTER
     module.exports = router

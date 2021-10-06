@@ -6,10 +6,10 @@
 {{else}}
 
 {{/each}}
-<h2 class="texto_principal">Criar Anotação</h2>
+<div class="card">
+    <h2 class="texto-principal">Criar Anotação</h2>
 
-<div class="card mt-4">
-    <div class="card-body">
+    <div class="card-body mt-4">
         <form action="/new/annotation" method="POST">
             <label for="title" class="form-label">Titulo:</label>
             <input type="text" name="title" id="id_title" placeholder="Nome do título" class="form-control">
@@ -20,7 +20,7 @@
             <label for="user_name" class="form-label">Nome de usuário:</label>
             <input type="text" name="user_name" id="id_user_name" placeholder="Digite o nome que vai aparecer na sua anotação" class="form-control">
             <div id="area-botao">
-                <button type="submit" class="btn btn-success mt-3">
+                <button type="submit" id="concluir" class="btn mt-3">
                     Salvar
                 </button>
             </div>
