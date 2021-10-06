@@ -28,10 +28,6 @@
         router.get('/registration', (req,res)=>{
             res.render("user/registration");
         });
-    // ROTA DE LOGIN
-        router.get('/login', (req,res)=>{
-            res.render("user/login");
-        });
     // ROTA DE LOGOUT
         router.get('/logout', user_accepted, (req, res)=>{
             req.logout();
@@ -193,7 +189,7 @@
     router.post("/realizing/login",(req,res,next)=>{
         passport.authenticate('local',{
             successRedirect: "/homepage",
-            failureRedirect: "/login",
+            failureRedirect: "/",
             failureFlash: true
         })(req,res,next);
     });

@@ -2,20 +2,41 @@
     
     <div class="card-body">
         <h1 class="texto_principal">Anotado Aqui</h1>
-        <div class="jumbotron">
+        <div class="jumbotron texto_principal">
             <h1 class="display-4">Olá, seja bem-vindo ao Noted Here!</h1>
-            <p class="lead">Registre-se faça o seu login e gerencie suas anotações.</p>
+            <p class="lead">Registre-se, faça o seu login e gerencie suas anotações.</p>
             <hr class="my-4">
         </div>
-        <div id="area-botao">
-            <a href="/login">
-                <button class="btn btn-success btn-lg">Login</button>
-            </a>
-        </div>
-        <div id="area-botao">
-            <a href="/registration">
-                <button class="btn btn-primary btn-lg">Registro</button>
-            </a>
+        {{#each erros}}
+            <div class="alert alert-danger">
+                {{texto}}
+            </div>
+        {{else}}
+
+        {{/each}}
+
+        <h2 class="texto_principal">Login</h2>
+        <div class="card mt-4">
+            <div class="card-body">
+                <form action="/realizing/login" method="POST">
+                    <label for="name_user" class="form-label">Usuário:</label>
+                    <input type="text" name="name_user" id="id_name_user" placeholder="Nome do usuário" class="form-control" required>
+                    
+                    <label for="password" class="form-label">Senha:</label>
+                    <input type="password" name="password" id="id_password" placeholder="Senha do usuário" class="form-control" required>
+                    <h6 class="mt-2">
+                        Não tem uma conta? 
+                        <a href="/registration">
+                            Registre-se
+                        </a>
+                    </h6>
+                    <div id="area-botao">
+                        <button type="submit" class="btn btn-success">
+                            Entrar
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
