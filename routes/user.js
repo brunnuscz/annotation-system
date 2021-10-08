@@ -192,7 +192,6 @@
             failureRedirect: "/",
             failureFlash: true
         })(req,res,next);
-        req.flash("success_msg", "Bem-Vindo ", req.body.name_user);
     });
 // EXPORTAR O ROUTER
     module.exports = router
