@@ -71,8 +71,7 @@
             // TRATAMENTO DE ERROS
             var erros = [];
             if(!req.body.title || typeof req.body.title == undefined || req.body.title == null ||
-               !req.body.annotation  || typeof req.body.annotation == undefined  || req.body.annotation == null  ||
-               !req.body.user_name  || typeof req.body.user_name == undefined  || req.body.user_name == null){
+               !req.body.annotation  || typeof req.body.annotation == undefined  || req.body.annotation == null){
                     erros.push({
                         texto: "Dados Inválidos!"
                     });
@@ -83,7 +82,8 @@
                 const new_annotation = {
                     title: req.body.title,
                     annotation: req.body.annotation,
-                    user_name: req.body.user_name
+                    user_name: req.user.name_user,
+                    id_user: req.user
                 }
                 new Annotation(new_annotation).save().then(()=>{
                     req.flash("success_msg", "Anotação salva com sucesso!")
@@ -99,8 +99,7 @@
             // TRATAMENTO DE ERROS
             var erros = [];
             if(!req.body.title      || typeof req.body.title == undefined      || req.body.title == null     ||
-               !req.body.annotation       || typeof req.body.annotation == undefined       || req.body.annotation == null      ||
-               !req.body.user_name  || typeof req.body.user_name == undefined  || req.body.user_name == null){
+               !req.body.annotation       || typeof req.body.annotation == undefined       || req.body.annotation == null){
                     erros.push({
                         texto: "Dados Inválidos!"
                     });
@@ -111,7 +110,6 @@
                 Annotation.findOne({_id: req.body.id}).then((annotation)=>{
                     annotation.title = req.body.title
                     annotation.annotation = req.body.annotation
-                    annotation.user_name = req.body.user_name
                     annotation.save().then(()=>{
                         req.flash("success_msg", "Anotação editada com sucesso!");
                         res.redirect("/list/annotation");

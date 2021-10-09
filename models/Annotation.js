@@ -14,6 +14,13 @@ const Annotation = new Schema({
         type: String,
         required: true
     },
+    id_user: {
+        // É A FORMA QUE O MONGO GRAVA O ID NO BANCO DE DADOS
+        type: Schema.Types.ObjectId,
+        // REFERÊNCIAR QUAL É MODEL
+        ref: 'User',
+        require: true
+    },
     date: {
         type: Date,
         default: Date.now()
