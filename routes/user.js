@@ -36,7 +36,7 @@
         });
     // ROTA DE LISTAR ANOTAÇÕES
         router.get('/list/annotation', user_accepted, (req,res)=>{
-            Annotation.find().sort({date:'desc'}).lean().then((annotations)=>{
+            Annotation.find({id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
                 res.render("user/list_annotation", {annotations: annotations});
             }).catch((erro)=>{
                 req.flash("error_msg", "Erro ao listar anotações!");
