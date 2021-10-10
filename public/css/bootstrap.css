@@ -23,7 +23,7 @@ hr {
   background-color: #050505;
 }
 #fundo-principal{
-  background: #a4a4a4;
+  background-image: url('../img/bg.png');
 }
 #fundo-inicio{
   position: relative;
@@ -52,6 +52,10 @@ hr {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
+#pesquisar{
+  margin-left: 20px;
+  margin-right: 20px;
+}
 #fundo-secundario{
   position: relative;
   display: flex;
@@ -70,13 +74,13 @@ hr {
   padding: 10px;
   text-align: center;
 }
-#link-sair{
+#link-navbar{
   font-size: 20px;
   padding: 10px;
   color: white;
   text-decoration: none;
 }
-#link-sair:hover{
+#link-navbar:hover{
   color: #797979;
   text-decoration: none;
 }

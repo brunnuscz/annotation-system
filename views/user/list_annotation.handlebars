@@ -6,12 +6,21 @@
         <button id="adicionar" class="btn">
             Nova Anotação
         </button>
-    </a><br>
+    </a> <br>
+    <div id="pesquisar">
+
+    <form action="/search/title" method="get" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="search" id="id_search" placeholder="Pesquisar por título">
+            <input type="submit" value="Buscar">
+        </div>
+    </form>
+    
+    </div>
     {{#each annotations}}
         <div id="card-novo-2"class="mt-4">
             <div class="card-body">
                 <h2>{{title}}</h2>
-                <h6>{{user_name}}</h6>
                 
                 <a href="/edit/annotation/{{_id}}">
                     <button id="editar" class="btn mt-2">

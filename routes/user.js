@@ -20,18 +20,14 @@
     const {user_accepted}= require('../helpers/user_accepted');
 
 // ROTAS GET
-    // ROTA PRINCIPAL
-        router.get('/homepage', user_accepted, (req,res)=>{
-            res.render("user/home_page");
-        });
     // ROTA FORMULÁRIO DE REGISTRO
         router.get('/registration', (req,res)=>{
             res.render("user/registration");
         });
     // ROTA DE LOGOUT
         router.get('/logout', user_accepted, (req, res)=>{
+            req.flash("success_msg", "Logout feito com sucesso");
             req.logout();
-            req.flash("success_msg", "Deslogado com sucesso!");
             res.redirect("/");
         });
     // ROTA DE LISTAR ANOTAÇÕES
@@ -65,6 +61,19 @@
                 res.redirect("/list/annotation");
             });
         });
+    // ROTA DO FORMULÁRIO DE EDIÇÃO DE NOME USUÁRIO
+        router.get('/edit/user', user_accepted,(req,res)=>{
+            res.render("user/edit_user");
+        });
+    // ROTA DE PESQUISAR
+    router.get('/search/title', user_accepted, (req,res)=>{
+        Annotation.find({title: req.query.search, id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
+            res.render("user/list_annotation", {annotations: annotations});
+        }).catch((erro)=>{
+            req.flash("error_msg", "Erro na busca!");
+            res.redirect("/");
+        });
+    });
 // ROTAS POST
     // ROTA DE CRIAR ANOTAÇÃO
         router.post('/new/annotation', user_accepted, (req,res)=>{
@@ -186,10 +195,11 @@
     // ROTA DE REALIZAR O LOGIN
     router.post("/realizing/login",(req,res,next)=>{
         passport.authenticate('local',{
-            successRedirect: "/homepage",
+            successRedirect: "/list/annotation",
             failureRedirect: "/",
             failureFlash: true
         })(req,res,next);
     });
+
 // EXPORTAR O ROUTER
     module.exports = router
