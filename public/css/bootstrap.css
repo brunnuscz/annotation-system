@@ -22,6 +22,24 @@ hr {
   margin-bottom: 10px;
   background-color: #050505;
 }
+.form-pesquisar {
+  margin-top: 10px;
+  margin-right: 2px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 0.375rem 0.75rem;
+  font-size: 15px;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+/*FUNDO*/
 #fundo-principal{
   background-image: url('../img/bg.png');
 }
@@ -35,39 +53,93 @@ hr {
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 50px;
+  padding: 10px;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
-#card-novo-2{
-  position: relative;
+#fundo-anotacao{
   display: flex;
-  flex-direction: column;
   min-width: 0;
-  word-wrap: break-word;
   background-color: #fff;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 80px;
+  padding: 10px;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+}
+
+/*BOTÕES*/
+#btn-deletar{
+  background-color: rgb(211, 0, 0);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 75px;
+  float: right;
+  height: 30px;
+}
+#btn-visualizar{
+  background-color: rgb(6, 144, 175);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 75px;
+  float: right;
+  height: 30px;
+}
+#btn-buscar{
+  background-color: rgb(255, 145, 0);
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 70px;
+  margin-right: 10px;
+  margin-left: 2px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: right;
+  height: 30px;
+}
+#btn-criar{
+  background-color: rgb(48, 175, 6);
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 70px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
+  height: 30px;
+}
+#btn-editar{
+  background-color: rgb(211, 186, 0);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 75px;
+  float: right;
+  height: 30px;
+}
+.texto-listar{
+  margin-left: 10px;
+  padding-top: 25px;
+}
+#area-pesquisar{
+  float:right;
+  margin: 10px;
 }
 #pesquisar{
-  margin-left: 20px;
-  margin-right: 20px;
-}
-#fundo-secundario{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  padding-bottom: 100px;
-  margin-bottom: 100px;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  float: right;
+  width: 40px;
+  height: 90px;
 }
 #area-botao{
   font-size: 20px;
@@ -92,46 +164,9 @@ hr {
   color: #828282;
   text-decoration: none;
 }
-#deletar{
-  background-color: rgb(211, 0, 0);
-  margin-left: 10px;
-  text-align: center;
-  font-size: 12px;
-  color: white;
-  width: 90px;
-  float: right;
-  height: 30px;
-}
-#visualizar{
-  background-color: rgb(6, 144, 175);
-  margin-left: 10px;
-  text-align: center;
-  font-size: 12px;
-  color: white;
-  width: 90px;
-  float: right;
-  height: 30px;
-}
-#adicionar{
-  background-color: rgb(48, 175, 6);
-  text-align: center;
-  font-size: 12px;
-  color: white;
-  width: 120px;
-  margin-left: 10px;
-  float: left;
-  height: 30px;
-}
-#editar{
-  background-color: rgb(211, 186, 0);
-  margin-left: 10px;
-  text-align: center;
-  font-size: 12px;
-  color: white;
-  width: 90px;
-  float: right;
-  height: 30px;
-}
+
+
+
 #criar{
   background-color: rgb(48, 175, 6);
   margin-left: 10px;

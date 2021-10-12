@@ -1,47 +1,55 @@
 {{>_navbar}}
-<div id="fundo-secundario">
-    <h2 class="texto-principal">Listar Anotações</h2>
+<div class="card p-3">
+    <div class="card-body">
+        <h2 class="texto-principal">Listar Anotações</h2>
 
-    <a href="/create/annotation">
-        <button id="adicionar" class="btn">
-            Nova Anotação
-        </button>
-    </a> <br>
-    <div id="pesquisar">
-
-    <form action="/search/title" method="get" class="form-inline">
-        <div class="form-group">
-            <input type="text" name="search" id="id_search" placeholder="Pesquisar por título">
-            <input type="submit" value="Buscar">
-        </div>
-    </form>
-    
-    </div>
-    {{#each annotations}}
-        <div id="card-novo-2"class="mt-4">
+        <div class="card m-4">
             <div class="card-body">
-                <h2>{{title}}</h2>
+                <div>
+                    <a href="/create/annotation">
+                        <button id="btn-criar" class="btn">
+                            Criar
+                        </button>
+                    </a>
+                </div>
                 
-                <a href="/edit/annotation/{{_id}}">
-                    <button id="editar" class="btn mt-2">
-                        Editar
-                    </button>
-                </a>
-                <form action="/delete/annotation" method="POST">
-                    <input type="hidden" name="id" value="{{_id}}">
-                    <button type="submit" id="deletar" class="btn btn-danger mt-2">
-                        Deletar
-                    </button>
-                </form>
-                
-                <a href="/see_more/annotation/{{_id}}">
-                    <button id="visualizar" class="btn mt-2">
-                        Visualizar
-                    </button>
-                </a>
+                <div id="area-pesquisar">
+                    <form action="/search/title" method="get">
+                        <input type="text" name="search" id="id_search" placeholder="Pesquisar por título" class="form-pesquisar">
+                        <button type="submit" id="btn-buscar" class="btn">
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+
+                {{#each annotations}}
+                    <div id="fundo-anotacao" class="mt-6">
+                        <div class="card-body">
+                            <h2>{{title}}</h2>
+                            
+                            <a href="/edit/annotation/{{_id}}">
+                                <button id="btn-editar" class="btn mt-2">
+                                    Editar
+                                </button>
+                            </a>
+                            <form action="/delete/annotation" method="POST">
+                                <input type="hidden" name="id" value="{{_id}}">
+                                <button type="submit" id="btn-deletar" class="btn btn-danger mt-2">
+                                    Deletar
+                                </button>
+                            </form>
+                            
+                            <a href="/see_more/annotation/{{_id}}">
+                                <button id="btn-visualizar" class="btn mt-2">
+                                    Visualizar
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                {{else}}
+                    <h4 class="texto-listar mt-5">Nenhuma anotação encontrada</h4>
+                {{/each}}
             </div>
         </div>
-    {{else}}
-        <h4 class="mt-4">Nenhuma anotação registrada</h4>
-    {{/each}}
+    </div>
 </div>

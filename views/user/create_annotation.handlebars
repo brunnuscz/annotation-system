@@ -6,22 +6,28 @@
 {{else}}
 
 {{/each}}
-<div class="card">
-    <h2 class="texto-principal">Criar Anotação</h2>
 
-    <div class="card-body mt-4">
-        <form action="/new/annotation" method="POST">
-            <label for="title" class="form-label">Titulo:</label>
-            <input type="text" name="title" id="id_title" placeholder="Nome do título" class="form-control">
-            <div class="mb-3">
-                <label for="annotation" class="form-label">Anotação:</label>
-                <textarea class="form-control"name="annotation" id="id_annotation" rows="9" placeholder="Escreva sua anotação" required></textarea>
+<div class="card">
+    <div class="card-body">
+    <h2 class="texto-principal">Criar Anotação</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-body mt-4">
+                    <form action="/new/annotation" method="POST">
+                        <label for="title" class="form-label">Titulo:</label>
+                        <input type="text" name="title" id="id_title" placeholder="Nome do título" class="form-control">
+                        <div class="mb-3">
+                            <label for="annotation" class="form-label">Anotação:</label>
+                            <textarea class="form-control"name="annotation" id="id_annotation" rows="9" placeholder="Escreva sua anotação" required></textarea>
+                        </div>
+                        <div id="area-botao">
+                            <button type="submit" id="concluir" class="btn mt-3">
+                                Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div id="area-botao">
-                <button type="submit" id="concluir" class="btn mt-3">
-                    Salvar
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

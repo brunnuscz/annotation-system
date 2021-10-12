@@ -5,27 +5,32 @@
 {{else}}
 
 {{/each}}
-<div class="card">
-    <h2 class="texto-principal">Registro</h2>
 
-    <div id="fundo-inicio" class="mt-4">
-        <div class="card-body">
-            <form action="/new/registration" method="POST">
-                <label for="name_user" class="form-label">Usuário:</label>
-                <input type="text" name="name_user" id="id_name_user" placeholder="Nome do usuário" class="form-control" required>
-                
-                <label for="password" class="form-label">Senha:</label>
-                <input type="password" name="password" id="id_password" placeholder="Digite uma senha" class="form-control" required>
-                
-                <label for="password_compared" class="form-label">Confirmar senha:</label>
-                <input type="password" name="password_compared" id="id_password_compared" placeholder="Confirme sua senha" class="form-control" required>
-                
-                <div id="area-botao">
-                    <button type="submit" id="concluir" class="btn mt-3">
-                        Registrar
-                    </button>
+<div class="card mt-5">
+    <div class="card-body">
+            <h2 class="texto-principal">
+                Registro
+            </h2>
+            <div id="fundo-inicio">  
+                <div class="card-body">
+                    <form action="/new/registration" method="POST">
+                        <label for="name_user" class="form-label">Usuário:</label>
+                        <input type="text" name="name_user" id="id_name_user" placeholder="Nome do usuário" class="form-control" required>
+                        
+                        <label for="password" class="form-label">Senha:</label>
+                        <input type="password" name="password" id="id_password" placeholder="Digite uma senha" class="form-control" required>
+                        
+                        <label for="password_compared" class="form-label">Confirmar senha:</label>
+                        <input type="password" name="password_compared" id="id_password_compared" placeholder="Confirme sua senha" class="form-control" required>
+                        
+                        <div id="area-botao">
+                            <button type="submit" id="concluir" class="btn mt-3">
+                                Registrar
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>   
+            </div>   
+        </div>
     </div>
 </div>
