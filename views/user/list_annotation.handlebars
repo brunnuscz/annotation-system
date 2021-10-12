@@ -12,6 +12,13 @@
                         </button>
                     </a>
                 </div>
+                <div>
+                    <a href="/other/annotation">
+                        <button id="btn-outros" class="btn">
+                            Outros
+                        </button>
+                    </a>
+                </div>
                 
                 <div id="area-pesquisar">
                     <form action="/search/title" method="get">
@@ -23,10 +30,11 @@
                 </div>
 
                 {{#each annotations}}
-                    <div id="fundo-anotacao" class="mt-6">
+                    <div id="fundo-anotacao">
                         <div class="card-body">
                             <h2>{{title}}</h2>
-                            
+                            <h4>{{publication_type}}</h4>
+                            <h6>{{user_name}}</h6>
                             <a href="/edit/annotation/{{_id}}">
                                 <button id="btn-editar" class="btn mt-2">
                                     Editar

@@ -10,6 +10,10 @@ const Annotation = new Schema({
         type: String,
         required: true
     },
+    publication_type:{
+        type: String,
+        require: true
+    },
     user_name:{
         type: String,
         required: true

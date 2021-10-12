@@ -118,6 +118,33 @@ hr {
   float: left;
   height: 30px;
 }
+#btn-outros{
+  background-color: rgb(3, 135, 153);
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
+  height: 30px;
+}
+.footer {
+  position:absolute;
+  bottom:0;
+  text-align: center;
+  margin-bottom: 10px;
+  width:100%;
+}
+#area-rodape{
+  margin-top: 175px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  color: #0035d5;
+  text-align: center;
+}
 #btn-editar{
   background-color: rgb(211, 186, 0);
   margin-left: 10px;
@@ -164,8 +191,17 @@ hr {
   color: #828282;
   text-decoration: none;
 }
-
-
+#link-sobre{
+  color: #0035d5;
+  text-decoration: none;
+  text-align: center;
+}
+#link-sobre:hover{
+  font-size: 20px;
+  color: #2e2e2e;
+  text-decoration: none;
+  text-align: center;
+}
 
 #criar{
   background-color: rgb(48, 175, 6);

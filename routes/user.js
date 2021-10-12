@@ -39,6 +39,15 @@
                 res.redirect("/");
             });
         });
+    // ROTA DE LISTAR OUTRAS ANOTAÇÕES
+        router.get('/other/annotation', user_accepted, (req,res)=>{
+            Annotation.find({publication_type: 'Pública'}).sort({date:'desc'}).lean().then((annotations)=>{
+                res.render("user/other_annotation", {annotations: annotations});
+            }).catch((erro)=>{
+                req.flash("error_msg", "Erro ao listar anotações!");
+                res.redirect("/");
+            });
+        });
     // ROTA DO FORMULÁRIO ANOTAÇÃO
         router.get('/create/annotation', user_accepted,(req,res)=>{
             res.render("user/create_annotation");
@@ -65,7 +74,7 @@
         router.get('/edit/user', user_accepted,(req,res)=>{
             res.render("user/edit_user");
         });
-    // ROTA DE PESQUISAR
+    // ROTA DE PESQUISAR SUAS ANOTAÇÕES
     router.get('/search/title', user_accepted, (req,res)=>{
         Annotation.find({title: req.query.search, id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
             res.render("user/list_annotation", {annotations: annotations});
@@ -74,13 +83,27 @@
             res.redirect("/");
         });
     });
+    // ROTA DE PESQUISAR OUTRAS ANOTAÇÕES
+    router.get('/search/other/title', user_accepted, (req,res)=>{
+        Annotation.find({title: req.query.search, publication_type: 'Pública'}).sort({date:'desc'}).lean().then((annotations)=>{
+            res.render("user/other_annotation", {annotations: annotations});
+        }).catch((erro)=>{
+            req.flash("error_msg", "Erro na busca!");
+            res.redirect("/");
+        });
+    });
+    // ROTA PÁGINA SOBRE
+    router.get('/about', (req,res)=>{
+        res.render("user/about");
+    });
 // ROTAS POST
     // ROTA DE CRIAR ANOTAÇÃO
         router.post('/new/annotation', user_accepted, (req,res)=>{
             // TRATAMENTO DE ERROS
             var erros = [];
             if(!req.body.title || typeof req.body.title == undefined || req.body.title == null ||
-               !req.body.annotation  || typeof req.body.annotation == undefined  || req.body.annotation == null){
+               !req.body.annotation  || typeof req.body.annotation == undefined  || req.body.annotation == null ||
+               !req.body.publication_type  || typeof req.body.publication_type == undefined  || req.body.publication_type == null ){
                     erros.push({
                         texto: "Dados Inválidos!"
                     });
@@ -92,7 +115,8 @@
                     title: req.body.title,
                     annotation: req.body.annotation,
                     user_name: req.user.name_user,
-                    id_user: req.user
+                    id_user: req.user,
+                    publication_type: req.body.publication_type
                 }
                 new Annotation(new_annotation).save().then(()=>{
                     req.flash("success_msg", "Anotação salva com sucesso!")
@@ -108,7 +132,8 @@
             // TRATAMENTO DE ERROS
             var erros = [];
             if(!req.body.title      || typeof req.body.title == undefined      || req.body.title == null     ||
-               !req.body.annotation       || typeof req.body.annotation == undefined       || req.body.annotation == null){
+               !req.body.annotation       || typeof req.body.annotation == undefined       || req.body.annotation == null ||
+               !req.body.publication_type       || typeof req.body.publication_type == undefined       || req.body.publication_type == null){
                     erros.push({
                         texto: "Dados Inválidos!"
                     });
@@ -119,6 +144,7 @@
                 Annotation.findOne({_id: req.body.id}).then((annotation)=>{
                     annotation.title = req.body.title
                     annotation.annotation = req.body.annotation
+                    annotation.publication_type = req.body.annotation
                     annotation.save().then(()=>{
                         req.flash("success_msg", "Anotação editada com sucesso!");
                         res.redirect("/list/annotation");
