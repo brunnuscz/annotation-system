@@ -1,65 +1,57 @@
 {{>_navbar}}
-<div class="card p-3">
-    <div class="card-body">
-        <h2 class="texto-principal">Suas Anotações</h2>
+<div class="card p-2">
+    <span>
+        <a href="/create/annotation">
+            <button id="btn-criar" class="btn">
+                Criar
+            </button>
+        </a>
+    
+        <a href="/other/annotation">
+            <button id="btn-outro" class="btn">
+                Outros
+            </button>
+        </a>
+        <form action="/search/title" class="area-pesquisar" method="get">
+            <input type="text" name="search" id="id_search" placeholder="Pesquisar por título" class="form-pesquisar">
+            <button type="submit" id="btn-buscar" class="btn">
+                Buscar
+            </button>
+        </form>
+    </span>
+    
+    <h2 class="texto-principal">Suas Anotações</h2>
 
-        <div class="card m-4">
-            <div class="card-body">
-                <div>
-                    <a href="/create/annotation">
-                        <button id="btn-criar" class="btn">
-                            Criar
+    <div class="card-body">
+        {{#each annotations}}
+            <div id="fundo-anotacao">
+                <div class="card-body">
+                    <div>
+                        <h2>Título: {{title}}</h2>
+                        <h4>Publicação: {{publication_type}}</h4>
+                        <span>{{formatDate date}}</span>
+                    </div>
+                    <a href="/edit/annotation/{{_id}}">
+                        <button id="btn-editar" class="btn mt-2">
+                            Editar
                         </button>
                     </a>
-                </div>
-                <div>
-                    <a href="/other/annotation">
-                        <button id="btn-outros" class="btn">
-                            Outros
-                        </button>
-                    </a>
-                </div>
-                
-                <div id="area-pesquisar">
-                    <form action="/search/title" method="get">
-                        <input type="text" name="search" id="id_search" placeholder="Pesquisar por título" class="form-pesquisar">
-                        <button type="submit" id="btn-buscar" class="btn">
-                            Buscar
+                    <form action="/delete/annotation" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <button type="submit" id="btn-deletar" class="btn btn-danger mt-2">
+                            Deletar
                         </button>
                     </form>
+                    
+                    <a href="/see_more/annotation/{{_id}}">
+                        <button id="btn-visualizar" class="btn mt-2">
+                            Visualizar
+                        </button>
+                    </a>
                 </div>
-
-                {{#each annotations}}
-                    <div id="fundo-anotacao">
-                        <div class="card-body">
-                            <div>
-                                <h2>Título: {{title}}</h2>
-                                <h4>Publicação: {{publication_type}}</h4>
-                                <span>{{formatDate date}}</span>
-                            </div>
-                            <a href="/edit/annotation/{{_id}}">
-                                <button id="btn-editar" class="btn mt-2">
-                                    Editar
-                                </button>
-                            </a>
-                            <form action="/delete/annotation" method="POST">
-                                <input type="hidden" name="id" value="{{_id}}">
-                                <button type="submit" id="btn-deletar" class="btn btn-danger mt-2">
-                                    Deletar
-                                </button>
-                            </form>
-                            
-                            <a href="/see_more/annotation/{{_id}}">
-                                <button id="btn-visualizar" class="btn mt-2">
-                                    Visualizar
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                {{else}}
-                    <h4 class="texto-listar mt-5">Nenhuma anotação encontrada</h4>
-                {{/each}}
             </div>
-        </div>
+        {{else}}
+            <h4 class="texto-listar mt-5">Nenhuma anotação encontrada</h4>
+        {{/each}}
     </div>
 </div>

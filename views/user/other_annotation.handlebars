@@ -1,41 +1,35 @@
 {{>_navbar}}
 <div class="card p-3">
+    <h2 class="texto-principal">Anotações Públicas</h2>
+    <div>
+        <form action="/search/other/title" method="get" class="area-pesquisar">
+            <input type="text" name="search" id="id_search" placeholder="Pesquisar por título" class="form-pesquisar">
+            <button type="submit" id="btn-buscar" class="btn">
+                Buscar
+            </button>
+        </form>
+    </div>
+        
     <div class="card-body">
-        <h2 class="texto-principal">Anotações Públicas</h2>
-
-        <div class="card m-4">
-            <div class="card-body">
-                
-                <div id="area-pesquisar">
-                    <form action="/search/other/title" method="get">
-                        <input type="text" name="search" id="id_search" placeholder="Pesquisar por título" class="form-pesquisar">
-                        <button type="submit" id="btn-buscar" class="btn">
-                            Buscar
-                        </button>
-                    </form>
-                </div>
-
-                {{#each annotations}}
-                    <div id="fundo-anotacao">
-                        <div class="card-body">
-                            <div>
-                                <h2>Título: {{title}}</h2>
-                                <h4>Publicação: {{publication_type}}</h4>
-                                <h6>Criador: {{user_name}}</h6>
-                                <h6>Data: {{formatDate date}}</h6>
-                            </div>
-                                 
-                            <a href="/see_more/annotation/{{_id}}">
-                                <button id="btn-visualizar" class="btn mt-2">
-                                    Visualizar
-                                </button>
-                            </a>
-                        </div>
+        {{#each annotations}}
+            <div id="fundo-anotacao">
+                <div class="card-body">
+                    <div>
+                        <h2>Título: {{title}}</h2>
+                        <h4>Publicação: {{publication_type}}</h4>
+                        <h6>Criador: {{user_name}}</h6>
+                        <h6>Data: {{formatDate date}}</h6>
                     </div>
-                {{else}}
-                    <h4 class="texto-listar mt-5">Nenhuma anotação encontrada</h4>
-                {{/each}}
+                            
+                    <a href="/see_more/annotation/{{_id}}">
+                        <button id="btn-visualizar" class="btn mt-2">
+                            Visualizar
+                        </button>
+                    </a>
+                </div>
             </div>
-        </div>
+        {{else}}
+            <h4 class="texto-listar mt-5">Nenhuma anotação encontrada</h4>
+        {{/each}}
     </div>
 </div>
