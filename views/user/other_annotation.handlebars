@@ -18,9 +18,12 @@
                 {{#each annotations}}
                     <div id="fundo-anotacao">
                         <div class="card-body">
-                            <h2>{{title}}</h2>
-                            <h3>{{publication_type}}</h3>
-                            <h6>{{user_name}}</h6>
+                            <div>
+                                <h2>Título: {{title}}</h2>
+                                <h4>Publicação: {{publication_type}}</h4>
+                                <h6>Criador: {{user_name}}</h6>
+                                <h6>Data: {{formatDate date}}</h6>
+                            </div>
                                  
                             <a href="/see_more/annotation/{{_id}}">
                                 <button id="btn-visualizar" class="btn mt-2">

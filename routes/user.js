@@ -30,7 +30,7 @@
             req.logout();
             res.redirect("/");
         });
-    // ROTA DE LISTAR ANOTAÇÕES
+    // ROTA DE LISTAR SUAS ANOTAÇÕES
         router.get('/list/annotation', user_accepted, (req,res)=>{
             Annotation.find({id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
                 res.render("user/list_annotation", {annotations: annotations});
@@ -70,32 +70,24 @@
                 res.redirect("/list/annotation");
             });
         });
-    // ROTA DO FORMULÁRIO DE EDIÇÃO DE NOME USUÁRIO
-        router.get('/edit/user', user_accepted,(req,res)=>{
-            res.render("user/edit_user");
-        });
     // ROTA DE PESQUISAR SUAS ANOTAÇÕES
-    router.get('/search/title', user_accepted, (req,res)=>{
-        Annotation.find({title: req.query.search, id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
-            res.render("user/list_annotation", {annotations: annotations});
-        }).catch((erro)=>{
-            req.flash("error_msg", "Erro na busca!");
-            res.redirect("/");
+        router.get('/search/title', user_accepted, (req,res)=>{
+            Annotation.find({title: req.query.search, id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
+                res.render("user/list_annotation", {annotations: annotations});
+            }).catch((erro)=>{
+                req.flash("error_msg", "Erro na busca!");
+                res.redirect("/");
+            });
         });
-    });
     // ROTA DE PESQUISAR OUTRAS ANOTAÇÕES
-    router.get('/search/other/title', user_accepted, (req,res)=>{
-        Annotation.find({title: req.query.search, publication_type: 'Pública'}).sort({date:'desc'}).lean().then((annotations)=>{
-            res.render("user/other_annotation", {annotations: annotations});
-        }).catch((erro)=>{
-            req.flash("error_msg", "Erro na busca!");
-            res.redirect("/");
+        router.get('/search/other/title', user_accepted, (req,res)=>{
+            Annotation.find({title: req.query.search, publication_type: 'Pública'}).sort({date:'desc'}).lean().then((annotations)=>{
+                res.render("user/other_annotation", {annotations: annotations});
+            }).catch((erro)=>{
+                req.flash("error_msg", "Erro na busca!");
+                res.redirect("/");
+            });
         });
-    });
-    // ROTA PÁGINA SOBRE
-    router.get('/about', (req,res)=>{
-        res.render("user/about");
-    });
 // ROTAS POST
     // ROTA DE CRIAR ANOTAÇÃO
         router.post('/new/annotation', user_accepted, (req,res)=>{
@@ -144,7 +136,7 @@
                 Annotation.findOne({_id: req.body.id}).then((annotation)=>{
                     annotation.title = req.body.title
                     annotation.annotation = req.body.annotation
-                    annotation.publication_type = req.body.annotation
+                    annotation.publication_type = req.body.publication_type
                     annotation.save().then(()=>{
                         req.flash("success_msg", "Anotação editada com sucesso!");
                         res.redirect("/list/annotation");
@@ -165,10 +157,10 @@
                 res.redirect("/list/annotation");
             }).catch((error)=>{
                 req.flash("error_msg", "Houve um erro ao deletar anotação");
-                res.redirect("list/annotation");
+                res.redirect("/list/annotation");
             });
         });
-    // ROTA DE REGISTRO
+    // ROTA DE NOVO REGISTRO
         router.post('/new/registration', (req,res)=>{
             // TRATAMENTO DE ERROS
             var erros = [];
@@ -219,13 +211,13 @@
             }
         });
     // ROTA DE REALIZAR O LOGIN
-    router.post("/realizing/login",(req,res,next)=>{
-        passport.authenticate('local',{
-            successRedirect: "/list/annotation",
-            failureRedirect: "/",
-            failureFlash: true
-        })(req,res,next);
-    });
+        router.post("/realizing/login",(req,res,next)=>{
+            passport.authenticate('local',{
+                successRedirect: "/list/annotation",
+                failureRedirect: "/",
+                failureFlash: true
+            })(req,res,next);
+        });
 
 // EXPORTAR O ROUTER
     module.exports = router

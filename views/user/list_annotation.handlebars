@@ -1,7 +1,7 @@
 {{>_navbar}}
 <div class="card p-3">
     <div class="card-body">
-        <h2 class="texto-principal">Listar Anotações</h2>
+        <h2 class="texto-principal">Suas Anotações</h2>
 
         <div class="card m-4">
             <div class="card-body">
@@ -32,9 +32,11 @@
                 {{#each annotations}}
                     <div id="fundo-anotacao">
                         <div class="card-body">
-                            <h2>{{title}}</h2>
-                            <h4>{{publication_type}}</h4>
-                            <h6>{{user_name}}</h6>
+                            <div>
+                                <h2>Título: {{title}}</h2>
+                                <h4>Publicação: {{publication_type}}</h4>
+                                <span>{{formatDate date}}</span>
+                            </div>
                             <a href="/edit/annotation/{{_id}}">
                                 <button id="btn-editar" class="btn mt-2">
                                     Editar

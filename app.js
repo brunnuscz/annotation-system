@@ -11,6 +11,8 @@
     const passport = require('passport');
     require("./config/auth")(passport);
     const db = require('./config/db');
+    const moment = require('moment');
+const { format } = require('path');
 // CONFIGURAÇÕES
     // SESSION
         app.use(session({
@@ -35,7 +37,17 @@
         app.use(bodyParser.urlencoded({extended: true}));
         app.use(bodyParser.json());
     // HANDLEBARS
-        app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+        app.engine('handlebars', handlebars({
+            defaultLayout: 'main',
+            helpers:{
+                formatDate: (date) => {
+                    return moment(date).format('DD/MM/YYYY');
+                },
+                formatTime: (date) => {
+                    return moment(date).format('HH:mm:ss');
+                }
+            }
+        }));
         app.set('view engine', 'handlebars');
     // MONGOOSE
         mongoose.Promise = global.Promise;

@@ -20,6 +20,12 @@
                             <label for="annotation" class="form-label">Anotação:</label>
                             <textarea class="form-control"name="annotation" id="id_annotation" rows="9" placeholder="Editar anotação">{{annotation.annotation}}</textarea>
                         </div>
+                        <label for="publication_type" class="form-label">Tipo de públicação:</label><br>
+                        <select name="publication_type" id="id_publication_type" class="form-control">
+                            <option value={{annotation.publication_type}}>{{annotation.publication_type}}</option>
+                            <option value="Pública">Pública</option>
+                            <option value="Privada">Privada</option>
+                        </select>
                     <div id="area-botao">
                             <button type="submit" id="concluir" class="btn mt-3">
                                 Concluir

@@ -82,6 +82,26 @@ hr {
   float: right;
   height: 30px;
 }
+#btn-deletar-conta{
+  background-color: rgb(211, 0, 0);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 100px;
+  float: right;
+  height: 30px;
+}
+#btn-editar-conta{
+  background-color: rgb(211, 186, 0);
+  margin-left: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 100px;
+  float: right;
+  height: 30px;
+}
 #btn-visualizar{
   background-color: rgb(6, 144, 175);
   margin-left: 10px;
@@ -131,20 +151,7 @@ hr {
   float: left;
   height: 30px;
 }
-.footer {
-  position:absolute;
-  bottom:0;
-  text-align: center;
-  margin-bottom: 10px;
-  width:100%;
-}
-#area-rodape{
-  margin-top: 175px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 15px;
-  color: #0035d5;
-  text-align: center;
-}
+
 #btn-editar{
   background-color: rgb(211, 186, 0);
   margin-left: 10px;
@@ -177,6 +184,13 @@ hr {
   font-size: 20px;
   padding: 10px;
   color: white;
+  text-decoration: none;
+}
+#links-superior{
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+  float: right;
   text-decoration: none;
 }
 #link-navbar:hover{
@@ -5048,6 +5062,7 @@ textarea.form-control-lg {
   position: relative;
   padding: 1rem 1rem;
   margin-bottom: 1rem;
+  margin-top: 10px;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
