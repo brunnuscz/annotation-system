@@ -70,6 +70,16 @@
                 res.redirect("/list/annotation");
             });
         });
+    // ROTA DO FORMULÁRIO EDITAR PERFIL
+        router.get('/profile', user_accepted,(req,res)=>{
+            User.findOne({_id: req.user}).lean().then((user) =>{
+                res.render("user/profile", {user: user});
+            }).catch((error)=>{
+                req.flash("error_msg", "Esse usuário não existe!");
+                res.redirect("/list/annotation");
+            });
+        });
+    
     // ROTA DE PESQUISAR SUAS ANOTAÇÕES
         router.get('/search/title', user_accepted, (req,res)=>{
             Annotation.find({title: req.query.search, id_user: req.user}).sort({date:'desc'}).lean().then((annotations)=>{
@@ -89,6 +99,34 @@
             });
         });
 // ROTAS POST
+    // ROTA DE EDITAR USUÁRIO
+        router.post('/editing/profile', user_accepted, (req,res)=>{
+            // TRATAMENTO DE ERROS
+            var erros = [];
+            if(!req.body.name_user || typeof req.body.name_user == undefined || req.body.name_user == null){
+                erros.push({texto: "Dados Inválidos!"});
+            }
+            if(req.body.name_user.length < 4){
+                erros.push({texto: "Nome de usuário muito curto"});
+            }
+            if(erros.length > 0){
+                res.render("user/profile", {erros: erros});
+            }else{
+                User.findOne({_id: req.body.id}).then((user)=>{
+                    user.name_user = req.body.name_user
+                    user.save().then(()=>{
+                        req.flash("success_msg", "Usuário editado com sucesso!");
+                        res.redirect("/list/annotation");
+                    }).catch((error)=>{
+                        req.flash("error_msg", "Houve um erro ao salvar edição!");
+                        res.redirect("/list/annotation");
+                    });
+                }).catch((error)=>{
+                    req.flash("error_msg","Houve um erro ao editar usuário!");
+                    res.redirect("/list/annotation");
+                });
+            }
+        });
     // ROTA DE CRIAR ANOTAÇÃO
         router.post('/new/annotation', user_accepted, (req,res)=>{
             // TRATAMENTO DE ERROS
@@ -172,6 +210,9 @@
             }
             if(req.body.password.length < 4){
                 erros.push({texto: "Senha muito curta"});
+            }
+            if(req.body.name_user.length < 4){
+                erros.push({texto: "Nome de usuário muito curto"});
             }
             if(req.body.password != req.body.password_compared){
                 erros.push({texto: "Senhas imcopatíveis"});
